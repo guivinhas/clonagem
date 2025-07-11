@@ -117,6 +117,31 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=4150857331860802&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<!-- 👇 Script de rastreio de scroll -->
+<script>
+  window.addEventListener('scroll', function () {
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+
+    if (scrollPercent >= 25 && !window.sent25) {
+      fbq('trackCustom', 'Scroll25');
+      window.sent25 = true;
+    }
+    if (scrollPercent >= 50 && !window.sent50) {
+      fbq('trackCustom', 'Scroll50');
+      window.sent50 = true;
+    }
+    if (scrollPercent >= 75 && !window.sent75) {
+      fbq('trackCustom', 'Scroll75');
+      window.sent75 = true;
+    }
+    if (scrollPercent >= 90 && !window.sent100) {
+      fbq('trackCustom', 'Scroll100');
+      window.sent100 = true;
+    }
+  });
+</script>
 <script
   src="https://cdn.utmify.com.br/scripts/utms/latest.js"
   data-utmify-prevent-subids
